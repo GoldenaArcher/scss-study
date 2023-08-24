@@ -1,0 +1,86 @@
+// numbers
+.numbers {
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 20px;
+}
+
+// strings
+.strings {
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+// colors
+.colors {
+  color: red;
+  background-color: #f00;
+  border-color: rgb(255, 0, 0);
+  outline-color: hsl(0, 100%, 50%);
+}
+
+// lists
+.lists {
+  margin: 10px 15px 5px 20px;
+  font-family: 'Raleway', 'Dosis', 'Lato';
+}
+
+// maps
+$colors: (
+  primary: red,
+  secondary: green,
+  tertiary: blue,
+);
+
+h1 {
+  color: map-get($map: $colors, $key: primary);
+}
+
+// ----------
+
+$b: 'border';
+$c: 'color';
+
+h2 {
+  box-sizing: #{$b}-box;
+  #{$b}: 1px solid blue;
+  color: red;
+  background-color: green;
+}
+
+// ------------
+$colors2: (
+  1: red,
+  2: green,
+  3: blue,
+  4: orange,
+);
+
+// @for $i from 1 to 4, 4 is exclude
+// @for $i from 1 through 4 {
+//   .paragraph-#{$i} {
+//     background-color: map-get($map: $colors2, $key: $i);
+//   }
+// }
+
+@each $i, $c in $colors2 {
+  .paragraph-#{$i} {
+    background-color: $c;
+  }
+}
+
+$colors3: 'red' 'green' 'blue' 'orange';
+@each $color in $colors3 {
+  .paragraph-#{$color} {
+    background-color: $color;
+  }
+}
+
+h1 {
+  @if (2 > 4) {
+    color: red;
+  } @else if(2 == 4) {
+  } @else {
+  }
+}
